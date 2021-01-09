@@ -29,7 +29,7 @@ export class ProductsService {
   }
 
   insert(product: Product) {
-    return this.http.post<any>(this.baseUrl, { headers: this.headers });
+    return this.http.post<any>(this.baseUrl, product, { headers: this.headers });
   }
 
   update(product: Product) {
