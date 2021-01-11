@@ -8,19 +8,15 @@
                     <input type="text" name="name" id="name" class="form-control" [(ngModel)]="item.name">
                 </div>
                 <div class="form-group col-6">
-                    <label for="price">Preço</label>
-                    <input type="number" name="price" id="price" class="form-control" [(ngModel)]="item.price">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" class="form-control" [(ngModel)]="item.email">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12">
-                    <label for="description">Descrição</label>
-                    <textarea name="description" id="description" class="form-control" rows="5" [(ngModel)]="item.description" ></textarea>
+                    <label for="message">Mensagem</label>
+                    <textarea name="message" id="message" class="form-control" rows="5" [(ngModel)]="item.message" ></textarea>
                 </div>
-            </div>
-            <div class="custom-control custom-switch">
-                <input type="checkbox" name="active" id="active" class="custom-control-input" [(ngModel)]="item.active">
-                <label for="active" class="custom-control-label">Ativo</label>
             </div>
         </form>
     </div>
@@ -28,7 +24,7 @@
 <div class="row mt-3">
     <div class="col-12">
         <div class="btn-group float-right">
-            <a routerLink="/produtos" class="btn btn-danger">Cancelar</a>
+            <a [routerLink]="'/produtos/' + item.product_id + '/interesses' " class="btn btn-danger">Cancelar</a>
             <button type="button" (click)="save()" class="btn btn-success">Salvar</button>
         </div>
     </div>

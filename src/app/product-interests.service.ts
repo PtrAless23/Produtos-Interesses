@@ -31,7 +31,7 @@ export class ProductInterestsService {
 
   insert(productInterest: ProductInterest) {
     let url: string = this.baseUrl + "/" + productInterest.product_id + "/interesses";
-    return this.http.post<any>(url, { headers: this.headers });
+    return this.http.post<any>(url, productInterest, { headers: this.headers });
   }
 
   update(productInterest: ProductInterest) {
