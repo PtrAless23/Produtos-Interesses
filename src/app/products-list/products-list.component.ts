@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
 
@@ -10,7 +10,8 @@ import { ProductsService } from '../products.service';
 export class ProductsListComponent implements OnInit {
 
   items: Product[];
-  
+
+  @ViewChild("alert") alert;
 
   constructor(private service: ProductsService) { }
 
@@ -24,18 +25,20 @@ export class ProductsListComponent implements OnInit {
 
   delete(id: number) {
     this.service.delete(id).subscribe(
-      (data: any) => this.callbackSucces(),
+      (data: any) => this.callbackSucces(data.message),
       (error: any) => this.callbackError(error)
     );
   }
 
-  private callbackSucces() {
-    alert('Registro excluído com sucesso');
+  private callbackSucces(message: string) {
+    this.alert.type = "success";
+    this.alert.message = message;
     this.getAll(); 
   }
 
   private callbackError(error: any) {
-    alert('Ocorreu um problema ao excluir');
+    this.alert.type = "danger";
+    this.alert.message = "Ocorreu um problema ao excluir o registro";
     console.log(error);
   }
 }
